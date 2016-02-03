@@ -17,4 +17,18 @@
             Me.TextBox1.SelectAll()
         End If
     End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Not My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.ProgramFiles & "\Semrau Software Consulting\GitGUI") Then
+            install()
+        Else
+            loadlastdata()
+        End If
+    End Sub
+    Private Sub install()
+
+    End Sub
+    Private Sub loadlastdata()
+
+    End Sub
 End Class
