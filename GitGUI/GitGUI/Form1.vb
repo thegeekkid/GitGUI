@@ -49,4 +49,14 @@
             Me.TopMost = False
         End If
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Me.OpenFileDialog1.ShowDialog()
+        path = Me.OpenFileDialog1.FileName.ToString
+        If Not My.Computer.FileSystem.FileExists(path) Then
+            MsgBox("Error: file not found.")
+        Else
+            Me.TextBox2.Text = path
+        End If
+    End Sub
 End Class
