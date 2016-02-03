@@ -34,6 +34,7 @@
             Me.CheckBox1.Checked = True
             Me.TopMost = True
         End If
+
     End Sub
 
     Private Sub loadlastdata()
@@ -49,15 +50,29 @@
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Me.OpenFileDialog1.ShowDialog()
-        path = Me.OpenFileDialog1.FileName.ToString
-        If Not My.Computer.FileSystem.FileExists(path) Then
-            MsgBox("Error: file not found.")
-        Else
-            If Not path.Contains("git.exe") Then
-                MsgBox("Waring!  That file does't look right... you might want to double check it.")
+        Me.FolderBrowserDialog1.ShowDialog()
+        path = Me.FolderBrowserDialog1.SelectedPath.ToString
+        If Not My.Computer.FileSystem.FileExists(path & "\git.exe") Then
+            MsgBox("Error: git.exe not found.  Please be sure you select the bin folder from the git installation.")
+        End If
+        Me.TextBox2.Text = path
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        path = Environment.GetEnvironmentVariable("PATH")
+        If Not path.Contains(Me.TextBox2.Text) Then
+            If MsgBox("Notice: Your PATH variable does not have your GIT installation directory in it.  This will cause this program to not operate correctly.  To install the GIT installation directory into your PATH variable, click Yes.  (Select no if the GIT installtion directory that you selected will change or you wish to add it manually.", vbYesNo) = vbYes Then
+                Environment.SetEnvironmentVariable("PATH", (path & ";" & Me.TextBox2.Text))
             End If
-            Me.TextBox2.Text = path
+        End If
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        path = Environment.GetEnvironmentVariable("PATH")
+        If Not path.Contains(Me.TextBox2.Text) Then
+            If MsgBox("Notice: Your PATH variable does not have your GIT installation directory in it.  This will cause this program to not operate correctly.  To install the GIT installation directory into your PATH variable, click Yes.  (Select no if the GIT installtion directory that you selected will change or you wish to add it manually.", vbYesNo) = vbYes Then
+                Environment.SetEnvironmentVariable("PATH", (path & ";" & Me.TextBox2.Text))
+            End If
         End If
     End Sub
 End Class
