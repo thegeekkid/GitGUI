@@ -56,7 +56,7 @@ Partial Class Form1
         Me.TextBox1.Location = New System.Drawing.Point(16, 30)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(256, 20)
-        Me.TextBox1.TabIndex = 1
+        Me.TextBox1.TabIndex = 12
         '
         'Button1
         '
@@ -138,7 +138,7 @@ Partial Class Form1
         Me.TextBox5.Location = New System.Drawing.Point(14, 219)
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.Size = New System.Drawing.Size(256, 20)
-        Me.TextBox5.TabIndex = 11
+        Me.TextBox5.TabIndex = 1
         '
         'Button3
         '

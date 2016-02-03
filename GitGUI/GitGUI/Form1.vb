@@ -54,6 +54,9 @@
         If Not My.Computer.FileSystem.FileExists(path) Then
             MsgBox("Error: file not found.")
         Else
+            If Not path.Contains("git.exe") Then
+                MsgBox("Waring!  That file does't look right... you might want to double check it.")
+            End If
             Me.TextBox2.Text = path
         End If
     End Sub
