@@ -20,15 +20,11 @@
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If Not My.Computer.FileSystem.FileExists(My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\installed.txt") Then
-            install()
-        Else
+        If My.Computer.FileSystem.FileExists(My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\installed.txt") Then
             loadlastdata()
         End If
     End Sub
-    Private Sub install()
 
-    End Sub
     Private Sub loadlastdata()
 
     End Sub
