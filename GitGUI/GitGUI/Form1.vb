@@ -33,10 +33,20 @@
                     Me.TextBox2.Text = (My.Computer.FileSystem.SpecialDirectories.ProgramFiles & " (x86)\Git\bin\git.exe")
                 End If
             End If
+            Me.CheckBox1.Checked = True
+            Me.TopMost = True
         End If
     End Sub
 
     Private Sub loadlastdata()
 
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        If Me.CheckBox1.Checked = True Then
+            Me.TopMost = True
+        Else
+            Me.TopMost = False
+        End If
     End Sub
 End Class
