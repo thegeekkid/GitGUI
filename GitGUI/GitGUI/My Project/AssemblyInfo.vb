@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("GitGUI")>
+<Assembly: AssemblyTitle("Semrau Software Consulting GitGUI")>
 <Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyCompany("Semrau Software Consulting")>
 <Assembly: AssemblyProduct("GitGUI")>
-<Assembly: AssemblyCopyright("Copyright ©  2016")>
+<Assembly: AssemblyCopyright("Distributed under MIT license.  Copyright ©  2016 Semrau Software Consulting")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
