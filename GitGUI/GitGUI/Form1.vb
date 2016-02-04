@@ -102,7 +102,7 @@
             git("add --all")
             git("commit -m """ & Me.TextBox5.Text & "")
         End If
-
+        Me.TextBox5.Focus()
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -113,6 +113,7 @@
             End If
         End If
         git("push " & Me.TextBox4.Text & " " & Me.TextBox3.Text)
+        Me.TextBox5.Focus()
     End Sub
     Private Sub git(arguments As String)
         My.Computer.FileSystem.WriteAllText((My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\temp.bat"), ("@echo off" & vbCrLf & "cd /d " & Me.TextBox1.Text & vbCrLf & "git " & arguments & vbCrLf & "exit"), False)
