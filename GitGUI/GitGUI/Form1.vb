@@ -82,7 +82,7 @@
         If My.Computer.FileSystem.FileExists(path & "height") Then
             Me.Height = My.Computer.FileSystem.ReadAllText(path & "height")
         End If
-        Me.Button4.Focus()
+        Me.CheckBox1.Focus()
 
         Me.TextBox5.Focus()
     End Sub
