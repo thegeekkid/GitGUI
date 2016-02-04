@@ -18,23 +18,21 @@
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If My.Computer.FileSystem.FileExists(My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\installed.txt") Then
-            loadlastdata()
-        Else
+        If Not My.Computer.FileSystem.FileExists(My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\installed.txt") Then
             If Not My.Computer.FileSystem.DirectoryExists(My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData) Then
                 My.Computer.FileSystem.CreateDirectory(My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData)
             End If
-            If My.Computer.FileSystem.FileExists(My.Computer.FileSystem.SpecialDirectories.ProgramFiles & "\Git\bin\git.exe") Then
-                Me.TextBox2.Text = (My.Computer.FileSystem.SpecialDirectories.ProgramFiles & "\Git\bin\git.exe")
+            If My.Computer.FileSystem.FileExists(My.Computer.FileSystem.SpecialDirectories.ProgramFiles & "\Git\cmd\git.exe") Then
+                Me.TextBox2.Text = (My.Computer.FileSystem.SpecialDirectories.ProgramFiles & "\Git\cmd\git.exe")
             Else
-                If My.Computer.FileSystem.FileExists(My.Computer.FileSystem.SpecialDirectories.ProgramFiles & " (x86)\Git\bin\git.exe") Then
-                    Me.TextBox2.Text = (My.Computer.FileSystem.SpecialDirectories.ProgramFiles & " (x86)\Git\bin\git.exe")
+                If My.Computer.FileSystem.FileExists(My.Computer.FileSystem.SpecialDirectories.ProgramFiles & " (x86)\Git\cmd\git.exe") Then
+                    Me.TextBox2.Text = (My.Computer.FileSystem.SpecialDirectories.ProgramFiles & " (x86)\Git\cmd\git.exe")
                 End If
             End If
             Me.CheckBox1.Checked = True
             Me.TopMost = True
         End If
-
+        loadlastdata()
     End Sub
     Private Sub Form1_Closing(sender As Object, e As EventArgs) Handles MyBase.Closing
         path = (My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\")
@@ -57,7 +55,7 @@
     End Sub
 
     Private Sub loadlastdata()
-        path = (My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & " \ ")
+        path = (My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\")
         If My.Computer.FileSystem.FileExists(path & "lastrepo") Then
             Me.TextBox1.Text = My.Computer.FileSystem.ReadAllText(path & "lastrepo")
         End If
