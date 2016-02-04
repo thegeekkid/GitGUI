@@ -55,8 +55,6 @@
 
         My.Computer.FileSystem.WriteAllText((path & "width"), Me.Width, False)
         My.Computer.FileSystem.WriteAllText((path & "height"), Me.Height, False)
-        My.Computer.FileSystem.WriteAllText((path & "positionx"), Me.AutoScrollPosition.X, False)
-        My.Computer.FileSystem.WriteAllText((path & "positiony"), Me.AutoScrollPosition.Y, False)
     End Sub
 
     Private Sub loadlastdata()
@@ -77,6 +75,13 @@
             Me.CheckBox1.Checked = My.Computer.FileSystem.ReadAllText(path & "topmost")
             Me.TopMost = Me.CheckBox1.Checked
         End If
+        If My.Computer.FileSystem.FileExists(path & "width") Then
+            Me.Width = My.Computer.FileSystem.ReadAllText(path & Width)
+        End If
+        If My.Computer.FileSystem.FileExists(path & "height") Then
+            Me.Height = My.Computer.FileSystem.ReadAllText(path & "height")
+        End If
+        Me.ScrollToControl(Me.Button4)
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
