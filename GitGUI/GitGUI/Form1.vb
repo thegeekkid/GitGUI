@@ -76,7 +76,7 @@
             Me.TopMost = Me.CheckBox1.Checked
         End If
         If My.Computer.FileSystem.FileExists(path & "width") Then
-            Me.Width = My.Computer.FileSystem.ReadAllText(path & Width)
+            Me.Width = My.Computer.FileSystem.ReadAllText(path & "width")
         End If
         If My.Computer.FileSystem.FileExists(path & "height") Then
             Me.Height = My.Computer.FileSystem.ReadAllText(path & "height")
