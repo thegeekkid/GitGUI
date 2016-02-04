@@ -65,6 +65,8 @@
                 Environment.SetEnvironmentVariable("PATH", (path & ";" & Me.TextBox2.Text))
             End If
         End If
+        git("add --all")
+        git("commit -m """ & Me.TextBox4.Text & "")
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -74,5 +76,13 @@
                 Environment.SetEnvironmentVariable("PATH", (path & ";" & Me.TextBox2.Text))
             End If
         End If
+    End Sub
+    Private Sub git(arguments As String)
+        My.Computer.FileSystem.WriteAllText((My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\temp.bat"), ("@echo off" & vbCrLf & "cd /d " & Me.TextBox1.Text & vbCrLf & "git " & arguments & vbCrLf & "exit"), False)
+        Dim proc As Process = New Process
+        proc.StartInfo.FileName = (My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\temp.bat")
+        proc.Start()
+        proc.WaitForExit()
+        My.Computer.FileSystem.DeleteFile(My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\temp.bat")
     End Sub
 End Class
