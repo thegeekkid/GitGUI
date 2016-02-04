@@ -84,7 +84,7 @@
         Me.FolderBrowserDialog1.ShowDialog()
         path = Me.FolderBrowserDialog1.SelectedPath.ToString
         If Not My.Computer.FileSystem.FileExists(path & "\git.exe") Then
-            MsgBox("Error: git.exe not found.  Please be sure you select the bin folder from the git installation.")
+            MsgBox("Error: git.exe not found.  Please be sure you select the cmd folder from the git installation.")
         End If
         Me.TextBox2.Text = path
     End Sub

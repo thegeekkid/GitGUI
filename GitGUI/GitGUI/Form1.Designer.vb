@@ -71,9 +71,9 @@ Partial Class Form1
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(16, 67)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(128, 13)
+        Me.Label2.Size = New System.Drawing.Size(171, 13)
         Me.Label2.TabIndex = 3
-        Me.Label2.Text = "GIT Executable Location:"
+        Me.Label2.Text = "GIT Executable Location (cmd dir):"
         '
         'TextBox2
         '
