@@ -106,7 +106,7 @@ Partial Class Form1
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(256, 20)
         Me.TextBox3.TabIndex = 7
-        Me.TextBox3.Text = "Master"
+        Me.TextBox3.Text = "master"
         '
         'Label4
         '
@@ -123,7 +123,7 @@ Partial Class Form1
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.Size = New System.Drawing.Size(256, 20)
         Me.TextBox4.TabIndex = 9
-        Me.TextBox4.Text = "Origin"
+        Me.TextBox4.Text = "origin"
         '
         'Label5
         '
