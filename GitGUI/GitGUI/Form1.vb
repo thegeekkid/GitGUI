@@ -51,10 +51,13 @@
             My.Computer.FileSystem.WriteAllText((path & "lastremote"), Me.TextBox4.Text, False)
         End If
         My.Computer.FileSystem.WriteAllText((path & "topmost"), Me.CheckBox1.Checked, False)
+        If Not My.Computer.FileSystem.FileExists(path & "installed.txt") Then
+            My.Computer.FileSystem.WriteAllText((path & "installed.txt"), "", False)
+        End If
     End Sub
 
     Private Sub loadlastdata()
-        path = (My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\")
+        path = (My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & " \ ")
         If My.Computer.FileSystem.FileExists(path & "lastrepo") Then
             Me.TextBox1.Text = My.Computer.FileSystem.ReadAllText(path & "lastrepo")
         End If
