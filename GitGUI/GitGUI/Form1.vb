@@ -52,6 +52,11 @@
         If Not My.Computer.FileSystem.FileExists(path & "installed.txt") Then
             My.Computer.FileSystem.WriteAllText((path & "installed.txt"), "", False)
         End If
+
+        My.Computer.FileSystem.WriteAllText((path & "width"), Me.Width, False)
+        My.Computer.FileSystem.WriteAllText((path & "height"), Me.Height, False)
+        My.Computer.FileSystem.WriteAllText((path & "positionx"), Me.AutoScrollPosition.X, False)
+        My.Computer.FileSystem.WriteAllText((path & "positiony"), Me.AutoScrollPosition.Y, False)
     End Sub
 
     Private Sub loadlastdata()
