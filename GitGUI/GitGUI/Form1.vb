@@ -37,7 +37,7 @@
 
     End Sub
     Private Sub Form1_Closing(sender As Object, e As EventArgs) Handles MyBase.Closing
-        Dim path = (My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\")
+        path = (My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\")
         If Not Me.TextBox1.Text = "" Then
             My.Computer.FileSystem.WriteAllText((path & "lastrepo"), Me.TextBox1.Text, False)
         End If
@@ -54,15 +54,27 @@
     End Sub
 
     Private Sub loadlastdata()
-
+        path = (My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\")
+        If My.Computer.FileSystem.FileExists(path & "lastrepo") Then
+            Me.TextBox1.Text = My.Computer.FileSystem.ReadAllText(path & "lastrepo")
+        End If
+        If My.Computer.FileSystem.FileExists(path & "gitlocation") Then
+            Me.TextBox2.Text = My.Computer.FileSystem.ReadAllText(path & "gitlocation")
+        End If
+        If My.Computer.FileSystem.FileExists(path & "lastbranch") Then
+            Me.TextBox3.Text = My.Computer.FileSystem.ReadAllText(path & "lastbranch")
+        End If
+        If My.Computer.FileSystem.FileExists(path & "lastremote") Then
+            Me.TextBox4.Text = My.Computer.FileSystem.ReadAllText(path & "lastremote")
+        End If
+        If My.Computer.FileSystem.FileExists(path & "topmost") Then
+            Me.CheckBox1.Checked = My.Computer.FileSystem.ReadAllText(path & "topmost")
+            Me.TopMost = Me.CheckBox1.Checked
+        End If
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
-        If Me.CheckBox1.Checked = True Then
-            Me.TopMost = True
-        Else
-            Me.TopMost = False
-        End If
+        Me.TopMost = Me.CheckBox1.Checked
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
