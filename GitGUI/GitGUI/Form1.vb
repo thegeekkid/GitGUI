@@ -112,10 +112,10 @@
                 Environment.SetEnvironmentVariable("PATH", (path & ";" & Me.TextBox2.Text))
             End If
         End If
-        git("push " & Me.TextBox4.Text & " " & Me.TextBox5.Text)
+        git("push " & Me.TextBox4.Text & " " & Me.TextBox3.Text)
     End Sub
     Private Sub git(arguments As String)
-        My.Computer.FileSystem.WriteAllText((My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\temp.bat"), ("@echo off" & vbCrLf & "cd /d " & Me.TextBox1.Text & vbCrLf & "git " & arguments & vbCrLf & "exit"), False)
+        My.Computer.FileSystem.WriteAllText((My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\temp.bat"), ("@echo off" & vbCrLf & "cd /d " & Me.TextBox1.Text & vbCrLf & "git " & arguments & vbCrLf & "pause" & vbCrLf & "exit"), False)
         Dim proc As Process = New Process
         proc.StartInfo.FileName = (My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\temp.bat")
         proc.Start()
