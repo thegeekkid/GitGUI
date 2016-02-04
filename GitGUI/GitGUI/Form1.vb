@@ -1,5 +1,6 @@
 ﻿Public Class Form1
     Dim path As String
+    Dim askedpath As Boolean = False
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Me.FolderBrowserDialog1.ShowDialog()
         path = Me.FolderBrowserDialog1.SelectedPath.ToString
@@ -105,11 +106,12 @@
         Else
             path = Environment.GetEnvironmentVariable("PATH")
 
-            If Not path.Contains(Me.TextBox2.Text) Then
+            If ((path.Contains(Me.TextBox2.Text) = False) And (askedpath = False)) Then
 
                 If MsgBox("Notice: Your PATH variable does not have your GIT installation directory in it.  This will cause this program to not operate correctly.  To install the GIT installation directory into your PATH variable, click Yes.  (Select no if the GIT installtion directory that you selected will change or you wish to add it manually.", vbYesNo) = vbYes Then
                     Environment.SetEnvironmentVariable("PATH", (path & ";" & Me.TextBox2.Text))
                 End If
+                askedpath = True
             End If
             git("add --all")
             git("commit -m """ & Me.TextBox5.Text & "")
@@ -120,10 +122,11 @@
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         path = Environment.GetEnvironmentVariable("PATH")
-        If Not path.Contains(Me.TextBox2.Text) Then
+        If ((path.Contains(Me.TextBox2.Text) = False) And (askedpath = False)) Then
             If MsgBox("Notice: Your PATH variable does not have your GIT installation directory in it.  This will cause this program to not operate correctly.  To install the GIT installation directory into your PATH variable, click Yes.  (Select no if the GIT installtion directory that you selected will change or you wish to add it manually.", vbYesNo) = vbYes Then
                 Environment.SetEnvironmentVariable("PATH", (path & ";" & Me.TextBox2.Text))
             End If
+            askedpath = True
         End If
         git("push " & Me.TextBox4.Text & " " & Me.TextBox3.Text)
         Me.TextBox5.Focus()
