@@ -113,6 +113,7 @@
             End If
             git("add --all")
             git("commit -m """ & Me.TextBox5.Text & "")
+            Me.TextBox5.Text = ""
         End If
         Me.TextBox5.Focus()
     End Sub
