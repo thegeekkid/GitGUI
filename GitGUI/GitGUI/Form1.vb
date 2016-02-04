@@ -92,7 +92,7 @@
             MsgBox("Error: a commit message is required.")
         Else
             path = Environment.GetEnvironmentVariable("PATH")
-            MsgBox(path)
+
             If Not path.Contains(Me.TextBox2.Text) Then
 
                 If MsgBox("Notice: Your PATH variable does not have your GIT installation directory in it.  This will cause this program to not operate correctly.  To install the GIT installation directory into your PATH variable, click Yes.  (Select no if the GIT installtion directory that you selected will change or you wish to add it manually.", vbYesNo) = vbYes Then
@@ -115,7 +115,7 @@
         git("push " & Me.TextBox4.Text & " " & Me.TextBox3.Text)
     End Sub
     Private Sub git(arguments As String)
-        My.Computer.FileSystem.WriteAllText((My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\temp.bat"), ("@echo off" & vbCrLf & "cd /d " & Me.TextBox1.Text & vbCrLf & "git " & arguments & vbCrLf & "pause" & vbCrLf & "exit"), False)
+        My.Computer.FileSystem.WriteAllText((My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\temp.bat"), ("@echo off" & vbCrLf & "cd /d " & Me.TextBox1.Text & vbCrLf & "git " & arguments & vbCrLf & "exit"), False)
         Dim proc As Process = New Process
         proc.StartInfo.FileName = (My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\temp.bat")
         proc.Start()
