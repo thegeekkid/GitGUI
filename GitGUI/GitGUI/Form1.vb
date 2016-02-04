@@ -82,6 +82,7 @@
             Me.Height = My.Computer.FileSystem.ReadAllText(path & "height")
         End If
         Me.ScrollToControl(Me.Button4)
+        Me.TextBox5.Focus()
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
