@@ -92,7 +92,9 @@
             MsgBox("Error: a commit message is required.")
         Else
             path = Environment.GetEnvironmentVariable("PATH")
+            MsgBox(path)
             If Not path.Contains(Me.TextBox2.Text) Then
+
                 If MsgBox("Notice: Your PATH variable does not have your GIT installation directory in it.  This will cause this program to not operate correctly.  To install the GIT installation directory into your PATH variable, click Yes.  (Select no if the GIT installtion directory that you selected will change or you wish to add it manually.", vbYesNo) = vbYes Then
                     Environment.SetEnvironmentVariable("PATH", (path & ";" & Me.TextBox2.Text))
                 End If
