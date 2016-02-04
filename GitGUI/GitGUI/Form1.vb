@@ -59,14 +59,19 @@
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        path = Environment.GetEnvironmentVariable("PATH")
-        If Not path.Contains(Me.TextBox2.Text) Then
-            If MsgBox("Notice: Your PATH variable does not have your GIT installation directory in it.  This will cause this program to not operate correctly.  To install the GIT installation directory into your PATH variable, click Yes.  (Select no if the GIT installtion directory that you selected will change or you wish to add it manually.", vbYesNo) = vbYes Then
-                Environment.SetEnvironmentVariable("PATH", (path & ";" & Me.TextBox2.Text))
+        If Me.TextBox5.Text = "" Then
+            MsgBox("Error: a commit message is required.")
+        Else
+            path = Environment.GetEnvironmentVariable("PATH")
+            If Not path.Contains(Me.TextBox2.Text) Then
+                If MsgBox("Notice: Your PATH variable does not have your GIT installation directory in it.  This will cause this program to not operate correctly.  To install the GIT installation directory into your PATH variable, click Yes.  (Select no if the GIT installtion directory that you selected will change or you wish to add it manually.", vbYesNo) = vbYes Then
+                    Environment.SetEnvironmentVariable("PATH", (path & ";" & Me.TextBox2.Text))
+                End If
             End If
+            git("add --all")
+            git("commit -m """ & Me.TextBox5.Text & "")
         End If
-        git("add --all")
-        git("commit -m """ & Me.TextBox4.Text & "")
+
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -76,6 +81,7 @@
                 Environment.SetEnvironmentVariable("PATH", (path & ";" & Me.TextBox2.Text))
             End If
         End If
+        git("push " & Me.TextBox4.Text & " " & Me.TextBox5.Text)
     End Sub
     Private Sub git(arguments As String)
         My.Computer.FileSystem.WriteAllText((My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\temp.bat"), ("@echo off" & vbCrLf & "cd /d " & Me.TextBox1.Text & vbCrLf & "git " & arguments & vbCrLf & "exit"), False)
