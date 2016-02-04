@@ -36,6 +36,22 @@
         End If
 
     End Sub
+    Private Sub Form1_Closing(sender As Object, e As EventArgs) Handles MyBase.Closing
+        Dim path = (My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\")
+        If Not Me.TextBox1.Text = "" Then
+            My.Computer.FileSystem.WriteAllText((path & "lastrepo"), Me.TextBox1.Text, False)
+        End If
+        If Not Me.TextBox2.Text = "" Then
+            My.Computer.FileSystem.WriteAllText((path & "gitlocation"), Me.TextBox2.Text, False)
+        End If
+        If Not Me.TextBox3.Text = "" Then
+            My.Computer.FileSystem.WriteAllText((path & "lastbranch"), Me.TextBox3.Text, False)
+        End If
+        If Not Me.TextBox4.Text = "" Then
+            My.Computer.FileSystem.WriteAllText((path & "lastremote"), Me.TextBox4.Text, False)
+        End If
+        My.Computer.FileSystem.WriteAllText((path & "topmost"), Me.CheckBox1.Checked, False)
+    End Sub
 
     Private Sub loadlastdata()
 
